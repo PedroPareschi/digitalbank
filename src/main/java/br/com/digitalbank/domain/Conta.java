@@ -15,7 +15,7 @@ public class Conta implements Serializable {
 
     @Id
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Integer id;
 
     @CPF
     private String cpf;
@@ -26,7 +26,7 @@ public class Conta implements Serializable {
 
     private String email;
 
-    public Conta(Long id, String cpf, String nome, String celular, String email) {
+    public Conta(Integer id, String cpf, String nome, String celular, String email) {
         this.id = id;
         this.cpf = cpf;
         this.nome = nome;
@@ -37,11 +37,11 @@ public class Conta implements Serializable {
     public Conta() {
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

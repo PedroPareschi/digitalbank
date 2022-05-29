@@ -14,7 +14,7 @@ public abstract class Cartao implements Serializable {
 
     @Id
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Integer id;
 
     private String numero;
 
@@ -28,7 +28,7 @@ public abstract class Cartao implements Serializable {
     }
 
 
-    public Cartao(Long id, String numero, String csv, int mesVencimento, int anoVencimento) {
+    public Cartao(Integer id, String numero, String csv, int mesVencimento, int anoVencimento) {
         this.id = id;
         this.numero = numero;
         this.csv = csv;
@@ -36,11 +36,11 @@ public abstract class Cartao implements Serializable {
         this.anoVencimento = anoVencimento;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

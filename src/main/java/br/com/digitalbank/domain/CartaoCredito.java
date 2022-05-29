@@ -15,7 +15,7 @@ public class CartaoCredito extends Cartao{
     public CartaoCredito() {
     }
 
-    public CartaoCredito(Long id, String numero, String csv, int mesVencimento, int anoVencimento, double limite, double fatura) {
+    public CartaoCredito(Integer id, String numero, String csv, int mesVencimento, int anoVencimento, double limite, double fatura) {
         super(id, numero, csv, mesVencimento, anoVencimento);
         this.limite = limite;
         this.fatura = fatura;

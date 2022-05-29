@@ -1,5 +1,7 @@
 package br.com.digitalbank.domain;
 
+import br.com.digitalbank.domain.enums.FormaDePagamento;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,7 +16,7 @@ public class Atividade implements Serializable {
 
     @Id
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Integer id;
 
     private double valor;
 
@@ -22,24 +24,24 @@ public class Atividade implements Serializable {
 
     private String categoria;
 
-    private boolean ehFatura;
+    private int formaDePagamento;
 
     public Atividade() {
     }
 
-    public Atividade(Long id, double valor, Date data, String categoria, boolean ehFatura) {
+    public Atividade(Integer id, double valor, Date data, String categoria, FormaDePagamento formaDePagamento) {
         this.id = id;
         this.valor = valor;
         this.data = data;
         this.categoria = categoria;
-        this.ehFatura = ehFatura;
+        this.formaDePagamento = formaDePagamento.getCod();
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -67,12 +69,12 @@ public class Atividade implements Serializable {
         this.categoria = categoria;
     }
 
-    public boolean isEhFatura() {
-        return ehFatura;
+    public FormaDePagamento getFormaDePagamento() {
+        return FormaDePagamento.toEnum(formaDePagamento);
     }
 
-    public void setEhFatura(boolean ehFatura) {
-        this.ehFatura = ehFatura;
+    public void setFormaDePagamento(FormaDePagamento formaDePagamento) {
+        this.formaDePagamento = formaDePagamento.getCod();
     }
 
     @Override

@@ -16,7 +16,7 @@ public class Boleto implements Serializable {
 
     @Id
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Integer id;
 
     private int estadoBoleto;
 
@@ -27,18 +27,18 @@ public class Boleto implements Serializable {
     public Boleto() {
     }
 
-    public Boleto(Long id, EstadoBoleto estadoBoleto, Date dataVencimento, Date dataPagamento) {
+    public Boleto(Integer id, EstadoBoleto estadoBoleto, Date dataVencimento, Date dataPagamento) {
         this.id = id;
         this.estadoBoleto = estadoBoleto.getCod();
         this.dataVencimento = dataVencimento;
         this.dataPagamento = dataPagamento;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -8,7 +8,7 @@ import java.util.Objects;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("Débito")
-public abstract class Cartao implements Serializable {
+public class Cartao implements Serializable {
 
     private static final long serialVersionUID = 1675952686388448334L;
 
@@ -24,16 +24,19 @@ public abstract class Cartao implements Serializable {
 
     private int anoVencimento;
 
+    @OneToOne(mappedBy = "cartaoCredito")
+    private Conta conta;
+
     public Cartao() {
     }
 
-
-    public Cartao(Integer id, String numero, String csv, int mesVencimento, int anoVencimento) {
+    public Cartao(Integer id, String numero, String csv, int mesVencimento, int anoVencimento, Conta conta) {
         this.id = id;
         this.numero = numero;
         this.csv = csv;
         this.mesVencimento = mesVencimento;
         this.anoVencimento = anoVencimento;
+        this.conta = conta;
     }
 
     public Integer getId() {
@@ -74,6 +77,14 @@ public abstract class Cartao implements Serializable {
 
     public void setAnoVencimento(int anoVencimento) {
         this.anoVencimento = anoVencimento;
+    }
+
+    public Conta getConta() {
+        return conta;
+    }
+
+    public void setConta(Conta conta) {
+        this.conta = conta;
     }
 
     @Override

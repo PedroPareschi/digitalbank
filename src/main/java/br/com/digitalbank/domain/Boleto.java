@@ -5,6 +5,7 @@ import br.com.digitalbank.domain.enums.EstadoBoleto;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
@@ -24,14 +25,18 @@ public class Boleto implements Serializable {
 
     private Date dataPagamento;
 
+    @OneToOne(mappedBy = "boleto")
+    private CartaoCredito cartaoCredito;
+
     public Boleto() {
     }
 
-    public Boleto(Integer id, EstadoBoleto estadoBoleto, Date dataVencimento, Date dataPagamento) {
+    public Boleto(Integer id, int estadoBoleto, Date dataVencimento, Date dataPagamento, CartaoCredito cartaoCredito) {
         this.id = id;
-        this.estadoBoleto = estadoBoleto.getCod();
+        this.estadoBoleto = estadoBoleto;
         this.dataVencimento = dataVencimento;
         this.dataPagamento = dataPagamento;
+        this.cartaoCredito = cartaoCredito;
     }
 
     public Integer getId() {
@@ -64,6 +69,14 @@ public class Boleto implements Serializable {
 
     public void setDataPagamento(Date dataPagamento) {
         this.dataPagamento = dataPagamento;
+    }
+
+    public CartaoCredito getCartaoCredito() {
+        return cartaoCredito;
+    }
+
+    public void setCartaoCredito(CartaoCredito cartaoCredito) {
+        this.cartaoCredito = cartaoCredito;
     }
 
     @Override

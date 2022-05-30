@@ -2,9 +2,7 @@ package br.com.digitalbank.domain;
 
 import br.com.digitalbank.domain.enums.FormaDePagamento;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
@@ -26,15 +24,21 @@ public class Atividade implements Serializable {
 
     private int formaDePagamento;
 
+    @ManyToOne
+    @JoinColumn(name = "conta_id")
+    private Conta conta;
+
+
     public Atividade() {
     }
 
-    public Atividade(Integer id, double valor, Date data, String categoria, FormaDePagamento formaDePagamento) {
+    public Atividade(Integer id, double valor, Date data, String categoria, int formaDePagamento, Conta conta) {
         this.id = id;
         this.valor = valor;
         this.data = data;
         this.categoria = categoria;
-        this.formaDePagamento = formaDePagamento.getCod();
+        this.formaDePagamento = formaDePagamento;
+        this.conta = conta;
     }
 
     public Integer getId() {
@@ -75,6 +79,18 @@ public class Atividade implements Serializable {
 
     public void setFormaDePagamento(FormaDePagamento formaDePagamento) {
         this.formaDePagamento = formaDePagamento.getCod();
+    }
+
+    public void setFormaDePagamento(int formaDePagamento) {
+        this.formaDePagamento = formaDePagamento;
+    }
+
+    public Conta getConta() {
+        return conta;
+    }
+
+    public void setConta(Conta conta) {
+        this.conta = conta;
     }
 
     @Override

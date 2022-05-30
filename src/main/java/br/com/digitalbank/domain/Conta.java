@@ -2,10 +2,9 @@ package br.com.digitalbank.domain;
 
 import org.hibernate.validator.constraints.br.CPF;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -26,12 +25,25 @@ public class Conta implements Serializable {
 
     private String email;
 
-    public Conta(Integer id, String cpf, String nome, String celular, String email) {
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cartao_de_debito_id", referencedColumnName = "id")
+    private Cartao cartaoDeDebito;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cartao_de_credito_id", referencedColumnName = "id")
+    private CartaoCredito cartaoCredito;
+
+    @OneToMany(mappedBy = "conta")
+    private List<Atividade> atividades;
+
+    public Conta(Integer id, String cpf, String nome, String celular, String email, Cartao cartaoDeDebito, CartaoCredito cartaoCredito) {
         this.id = id;
         this.cpf = cpf;
         this.nome = nome;
         this.celular = celular;
         this.email = email;
+        this.cartaoDeDebito = cartaoDeDebito;
+        this.cartaoCredito = cartaoCredito;
     }
 
     public Conta() {
@@ -75,6 +87,30 @@ public class Conta implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Cartao getCartaoDeDebito() {
+        return cartaoDeDebito;
+    }
+
+    public void setCartaoDeDebito(Cartao cartaoDeDebito) {
+        this.cartaoDeDebito = cartaoDeDebito;
+    }
+
+    public CartaoCredito getCartaoCredito() {
+        return cartaoCredito;
+    }
+
+    public void setCartaoCredito(CartaoCredito cartaoCredito) {
+        this.cartaoCredito = cartaoCredito;
+    }
+
+    public List<Atividade> getAtividades() {
+        return atividades;
+    }
+
+    public void setAtividades(List<Atividade> atividades) {
+        this.atividades = atividades;
     }
 
     @Override

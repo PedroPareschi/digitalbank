@@ -32,12 +32,12 @@ public class Atividade implements Serializable {
     public Atividade() {
     }
 
-    public Atividade(Integer id, double valor, Date data, String categoria, int formaDePagamento, Conta conta) {
+    public Atividade(Integer id, double valor, Date data, String categoria, FormaDePagamento formaDePagamento, Conta conta) {
         this.id = id;
         this.valor = valor;
         this.data = data;
         this.categoria = categoria;
-        this.formaDePagamento = formaDePagamento;
+        this.formaDePagamento = formaDePagamento.getCod();
         this.conta = conta;
     }
 

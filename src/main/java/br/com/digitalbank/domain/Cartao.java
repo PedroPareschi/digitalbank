@@ -18,7 +18,7 @@ public class Cartao implements Serializable {
 
     private String numero;
 
-    private String csv;
+    private String cvv;
 
     private int mesVencimento;
 
@@ -30,10 +30,10 @@ public class Cartao implements Serializable {
     public Cartao() {
     }
 
-    public Cartao(Integer id, String numero, String csv, int mesVencimento, int anoVencimento, Conta conta) {
+    public Cartao(Integer id, String numero, String cvv, int mesVencimento, int anoVencimento, Conta conta) {
         this.id = id;
         this.numero = numero;
-        this.csv = csv;
+        this.cvv = cvv;
         this.mesVencimento = mesVencimento;
         this.anoVencimento = anoVencimento;
         this.conta = conta;
@@ -55,12 +55,12 @@ public class Cartao implements Serializable {
         this.numero = numero;
     }
 
-    public String getCsv() {
-        return csv;
+    public String getCvv() {
+        return cvv;
     }
 
-    public void setCsv(String csv) {
-        this.csv = csv;
+    public void setCvv(String cvv) {
+        this.cvv = cvv;
     }
 
     public int getMesVencimento() {

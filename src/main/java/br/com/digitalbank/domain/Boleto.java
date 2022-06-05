@@ -1,11 +1,9 @@
 package br.com.digitalbank.domain;
 
 import br.com.digitalbank.domain.enums.EstadoBoleto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
@@ -16,7 +14,7 @@ public class Boleto implements Serializable {
     private static final long serialVersionUID = -9155513979589956553L;
 
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private int estadoBoleto;
@@ -25,6 +23,7 @@ public class Boleto implements Serializable {
 
     private Date dataPagamento;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "boleto")
     private CartaoCredito cartaoCredito;
 

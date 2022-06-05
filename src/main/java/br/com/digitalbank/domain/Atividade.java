@@ -1,6 +1,7 @@
 package br.com.digitalbank.domain;
 
 import br.com.digitalbank.domain.enums.FormaDePagamento;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,7 +14,7 @@ public class Atividade implements Serializable {
     private static final long serialVersionUID = -5281374730077202620L;
 
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private double valor;
@@ -24,6 +25,7 @@ public class Atividade implements Serializable {
 
     private int formaDePagamento;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "conta_id")
     private Conta conta;

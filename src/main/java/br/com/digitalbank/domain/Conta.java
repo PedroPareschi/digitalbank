@@ -1,7 +1,5 @@
 package br.com.digitalbank.domain;
 
-import org.hibernate.validator.constraints.br.CPF;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -13,10 +11,9 @@ public class Conta implements Serializable {
     private static final long serialVersionUID = 5150922383894893540L;
 
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @CPF
     private String cpf;
 
     private String nome;
@@ -24,6 +21,8 @@ public class Conta implements Serializable {
     private String celular;
 
     private String email;
+
+    private String senha;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cartao_de_debito_id", referencedColumnName = "id")
@@ -36,12 +35,13 @@ public class Conta implements Serializable {
     @OneToMany(mappedBy = "conta")
     private List<Atividade> atividades;
 
-    public Conta(Integer id, String cpf, String nome, String celular, String email, Cartao cartaoDeDebito, CartaoCredito cartaoCredito) {
+    public Conta(Integer id, String cpf, String nome, String celular, String email, String senha, Cartao cartaoDeDebito, CartaoCredito cartaoCredito) {
         this.id = id;
         this.cpf = cpf;
         this.nome = nome;
         this.celular = celular;
         this.email = email;
+        this.senha = senha;
         this.cartaoDeDebito = cartaoDeDebito;
         this.cartaoCredito = cartaoCredito;
     }
@@ -87,6 +87,14 @@ public class Conta implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public Cartao getCartaoDeDebito() {

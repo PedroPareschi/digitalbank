@@ -1,5 +1,7 @@
 package br.com.digitalbank.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -13,7 +15,7 @@ public class Cartao implements Serializable {
     private static final long serialVersionUID = 1675952686388448334L;
 
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String numero;
@@ -24,7 +26,8 @@ public class Cartao implements Serializable {
 
     private int anoVencimento;
 
-    @OneToOne(mappedBy = "cartaoCredito")
+    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "cartaoCredito")
     private Conta conta;
 
     public Cartao() {

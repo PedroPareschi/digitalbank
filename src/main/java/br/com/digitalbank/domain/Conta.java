@@ -1,9 +1,15 @@
 package br.com.digitalbank.domain;
 
+import br.com.digitalbank.domain.enums.Perfil;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 public class Conta implements Serializable {
@@ -22,7 +28,12 @@ public class Conta implements Serializable {
 
     private String email;
 
+    @JsonIgnore
     private String senha;
+
+    @ElementCollection(fetch=FetchType.EAGER)
+    @CollectionTable(name="PERFIS")
+    private Set<Integer> perfis = new HashSet<>();
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cartao_de_debito_id", referencedColumnName = "id")
@@ -44,6 +55,7 @@ public class Conta implements Serializable {
         this.senha = senha;
         this.cartaoDeDebito = cartaoDeDebito;
         this.cartaoCredito = cartaoCredito;
+        addPerfil(Perfil.CLIENTE);
     }
 
     public Conta() {
@@ -95,6 +107,14 @@ public class Conta implements Serializable {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public Set<Perfil> getPerfis() {
+        return perfis.stream().map(Perfil::toEnum).collect(Collectors.toSet());
+    }
+
+    public void addPerfil(Perfil perfil) {
+        perfis.add(perfil.getCod());
     }
 
     public Cartao getCartaoDeDebito() {

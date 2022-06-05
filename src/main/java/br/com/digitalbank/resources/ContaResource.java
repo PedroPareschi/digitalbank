@@ -22,7 +22,8 @@ public class ContaResource {
     @ApiOperation(value = "Cadastrando nova conta")
     @PostMapping()
     public ResponseEntity<Void> insert(@Valid @RequestBody ContaDTO contaDTO) {
-        Conta conta = service.insert(new Conta(null, contaDTO.getCpf(), contaDTO.getNome(), contaDTO.getCelular(), contaDTO.getEmail(), contaDTO.getSenha(), null, null));
+        Conta conta = service.fromDTO(contaDTO);
+        conta = service.insert(conta);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(conta.getId()).toUri();
         return ResponseEntity.created(uri).build();

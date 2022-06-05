@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import java.text.ParseException;
 
 @Configuration
-public class DevConfig {
+public class TestConfig {
     @Autowired
     private DBService dbService;
 

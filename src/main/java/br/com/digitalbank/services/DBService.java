@@ -5,11 +5,13 @@ import br.com.digitalbank.domain.Cartao;
 import br.com.digitalbank.domain.CartaoCredito;
 import br.com.digitalbank.domain.Conta;
 import br.com.digitalbank.domain.enums.FormaDePagamento;
+import br.com.digitalbank.domain.enums.Perfil;
 import br.com.digitalbank.repositories.AtividadeRepository;
 import br.com.digitalbank.repositories.CartaoCreditoRepository;
 import br.com.digitalbank.repositories.CartaoRepository;
 import br.com.digitalbank.repositories.ContaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -32,6 +34,9 @@ public class DBService {
     @Autowired
     private CartaoCreditoRepository cartaoCreditoRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
     public void instantiateTestDatabase() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yy");
         try {
@@ -40,7 +45,8 @@ public class DBService {
             conta1.setCpf("38565157717");
             conta1.setCelular("65989851967");
             conta1.setEmail("enzo_dacruz@cincoentretenimentos.com.br");
-            conta1.setSenha("123");
+            conta1.setSenha(encoder.encode("123"));
+            conta1.addPerfil(Perfil.CLIENTE);
 
             Cartao debitoConta1 = new Cartao(null, "5384281090319170", "289", 3, 2024, conta1);
 

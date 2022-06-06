@@ -1,8 +1,8 @@
 package br.com.digitalbank.services;
 
-import br.com.digitalbank.configs.UserSS;
 import br.com.digitalbank.domain.Conta;
 import br.com.digitalbank.repositories.ContaRepository;
+import br.com.digitalbank.security.UserSS;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

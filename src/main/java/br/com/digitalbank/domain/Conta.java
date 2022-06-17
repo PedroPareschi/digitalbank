@@ -31,8 +31,8 @@ public class Conta implements Serializable {
     @JsonIgnore
     private String senha;
 
-    @ElementCollection(fetch=FetchType.EAGER)
-    @CollectionTable(name="PERFIS")
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "PERFIS")
     private Set<Integer> perfis = new HashSet<>();
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -43,6 +43,7 @@ public class Conta implements Serializable {
     @JoinColumn(name = "cartao_de_credito_id", referencedColumnName = "id")
     private CartaoCredito cartaoCredito;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "conta")
     private List<Atividade> atividades;
 

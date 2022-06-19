@@ -25,6 +25,8 @@ public class Atividade implements Serializable {
 
     private int formaDePagamento;
 
+    private String nomeContaDestino;
+
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "conta_id")
@@ -34,11 +36,12 @@ public class Atividade implements Serializable {
     public Atividade() {
     }
 
-    public Atividade(Integer id, double valor, Date data, String categoria, FormaDePagamento formaDePagamento, Conta conta) {
+    public Atividade(Integer id, double valor, Date data, String categoria, FormaDePagamento formaDePagamento, String nomeContaDestino, Conta conta) {
         this.id = id;
         this.valor = valor;
         this.data = data;
         this.categoria = categoria;
+        this.nomeContaDestino = nomeContaDestino;
         this.formaDePagamento = formaDePagamento.getCod();
         this.conta = conta;
     }
@@ -85,6 +88,14 @@ public class Atividade implements Serializable {
 
     public void setFormaDePagamento(int formaDePagamento) {
         this.formaDePagamento = formaDePagamento;
+    }
+
+    public String getNomeContaDestino() {
+        return nomeContaDestino;
+    }
+
+    public void setNomeContaDestino(String nomeContaDestino) {
+        this.nomeContaDestino = nomeContaDestino;
     }
 
     public Conta getConta() {

@@ -2,6 +2,7 @@ package br.com.digitalbank.resources;
 
 import br.com.digitalbank.domain.Conta;
 import br.com.digitalbank.dtos.ContaDTO;
+import br.com.digitalbank.dtos.TransferenciaDTO;
 import br.com.digitalbank.services.ContaService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,12 @@ public class ContaResource {
     public ResponseEntity<Conta> find(@PathVariable Integer id) {
         Conta conta = service.find(id);
         return ResponseEntity.ok().body(conta);
+    }
+
+    @ApiOperation(value = "Transferir dinheiro")
+    @PutMapping(value = "/{id}/transferencia")
+    public ResponseEntity<Void> transferir(@PathVariable Integer id, @Valid @RequestBody TransferenciaDTO transferenciaDTO){
+        service.transferir(id, transferenciaDTO);
+        return ResponseEntity.noContent().build();
     }
 }

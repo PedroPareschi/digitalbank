@@ -31,6 +31,8 @@ public class Conta implements Serializable {
     @JsonIgnore
     private String senha;
 
+    private Double saldo;
+
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "PERFIS")
     private Set<Integer> perfis = new HashSet<>();
@@ -47,13 +49,15 @@ public class Conta implements Serializable {
     @OneToMany(mappedBy = "conta")
     private List<Atividade> atividades;
 
-    public Conta(Integer id, String cpf, String nome, String celular, String email, String senha, Cartao cartaoDeDebito, CartaoCredito cartaoCredito) {
+    public Conta(Integer id, String cpf, String nome, String celular, String email, String senha, Double saldo,
+                 Cartao cartaoDeDebito, CartaoCredito cartaoCredito) {
         this.id = id;
         this.cpf = cpf;
         this.nome = nome;
         this.celular = celular;
         this.email = email;
         this.senha = senha;
+        this.saldo = saldo;
         this.cartaoDeDebito = cartaoDeDebito;
         this.cartaoCredito = cartaoCredito;
         addPerfil(Perfil.CLIENTE);
@@ -104,6 +108,14 @@ public class Conta implements Serializable {
 
     public String getSenha() {
         return senha;
+    }
+
+    public Double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(Double saldo) {
+        this.saldo = saldo;
     }
 
     public void setSenha(String senha) {

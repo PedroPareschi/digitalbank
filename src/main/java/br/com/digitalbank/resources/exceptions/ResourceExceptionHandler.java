@@ -1,9 +1,6 @@
 package br.com.digitalbank.resources.exceptions;
 
-import br.com.digitalbank.services.exceptions.AuthorizationException;
-import br.com.digitalbank.services.exceptions.DataIntegrityException;
-import br.com.digitalbank.services.exceptions.FileException;
-import br.com.digitalbank.services.exceptions.ObjectNotFoundException;
+import br.com.digitalbank.services.exceptions.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -54,4 +51,10 @@ public class ResourceExceptionHandler {
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
 	}
 
+	@ExceptionHandler(SaldoInsuficienteException.class)
+	public ResponseEntity<StandardError> saldo(SaldoInsuficienteException e, HttpServletRequest request) {
+
+		StandardError err = new StandardError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), "Saldo insuficiente", e.getMessage(), request.getRequestURI());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
+	}
 }

@@ -41,6 +41,6 @@ public class ContaResource {
     @PutMapping(value = "/{id}/transferencia")
     public ResponseEntity<Void> transferir(@PathVariable Integer id, @Valid @RequestBody TransferenciaDTO transferenciaDTO){
         service.transferir(id, transferenciaDTO);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
 }

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta name="viewport" content="width=device-width">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="cadastro.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+</head>
+<body>
+
+<form action="index.html" class="login-form">
+    <h1>Cadastre-se</h1>
+
+    <div class="txtb">
+        <input type="text">
+        <span data-placeholder="CPF"></span>
+    </div>
+
+    <div class="txtb">
+        <input type="text">
+        <span data-placeholder="Nome completo"></span>
+    </div>
+
+    <div class="txtb">
+        <input type="number">
+        <span data-placeholder="Celular"></span>
+    </div>
+
+    <div class="txtb">
+        <input type="text">
+        <span data-placeholder="E-mail"></span>
+    </div>
+
+    <div class="txtb">
+        <input type="password">
+        <span data-placeholder="Senha"></span>
+    </div>
+
+    <div class="txtb">
+        <input type="password">
+        <span data-placeholder="Confirme sua senha"></span>
+    </div>
+
+    <div class="" remember
+    ">
+    <input type="checkbox" name=""> Eu li, estou ciente das condições de tratamento dos meus dados pessoais e dou meu
+    consetimento, quando aplicável, conforme descrito nessa <a href="#"> Política de Privacidade <a>
+    </div>
+
+    <input type="submit" class="logbtn" value="Enviar">
+</form>
+
+<script type="text/javascript">
+      $(".txtb input").on("focus",function(){
+        $(this).addClass("focus");
+      });
+
+      $(".txtb input").on("blur",function(){
+        if($(this).val() == "")
+        $(this).removeClass("focus");
+      });
+
+
+</script>
+
+
+</body>
+</html>

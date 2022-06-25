@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="utf-8">
+    <title>Digital Bank</title>
+    <link rel="stylesheet" th:href="@{/css/greeting.css}">
+    <meta name="viewport" content="width=device-width">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="navbar">
+    <div class="logo">
+
+    </div>
+    <a class="btn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </a>
+    <div class="menu">
+        <a class="active" href="#">Página Inicial</a>
+        <a href="#">Quem somos nós?</a>
+        <a href="Login/index.html" style="background-color: #3b93c3; color: #333; padding: 20px 20px;">Login</a>
+    </div>
+</div>
+<div class="header">
+
+</div>
+<script type="text/javascript">
+$(".btn").on("click",function(){
+  $('.menu').toggleClass("show");
+});
+
+
+</script>
+</body>
+</html>
+

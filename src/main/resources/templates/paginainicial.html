@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="utf-8">
+    <title>Página Login</title>
+    <link rel="stylesheet" href="paginainicial.css">
+    <meta name="viewport" content="width=device-width">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg .com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+<div class="navbar">
+    <div class="logo">
+    </div>
+    <a class="btn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </a>
+    <div class="menu">
+        <a href="#" class="active"> Histórico </a>
+        <a href="#"> Transferência </a>
+        <a style="background-color: #3b93c3; color: #333; padding: 20px 20px;">Name_Login</a>
+    </div>
+</div>
+
+<center>
+    <!-- CARDS -->
+    <div class="cardBox">
+        <div class="card">
+            <div>
+                <p></p>
+                <div class="numbers">R$500,00</div>
+                <div class="cardName">Saldo em conta</div>
+            </div>
+
+            <div class="iconBx">
+                <ion-icon name="cash-outline"></ion-icon>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <p> Cartão de crédito </p>
+                <div class="numbers">R$93,75</div>
+                <div class="cardName">Limite disponível de R$200,00</div>
+            </div>
+            <div class="iconBx">
+                <ion-icon name="card-outline"></ion-icon>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <p> Empréstimo </p>
+                <div class="cardName">Valor disponível até</div>
+                <div class="numbers">R$12.500,00</div>
+            </div>
+            <div class="iconBx">
+                <ion-icon name="wallet-outline"></ion-icon>
+            </div>
+        </div>
+        <!-- DETALHES ABAIXO -->
+        <div class="details">
+            <div class="recentOrders">
+                <div class="cardHeader">
+                    <h2>Histórico de compras</h2>
+                    <a href="#" class="btm">Visualizar todos</a>
+                </div>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <td>Nome</td>
+                        <td>Preço</td>
+                        <td>Status</td>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>Ar-condicionado</td>
+                        <td>R$1200</td>
+                        <td><span class="status concluido">Concluido</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Dell Laptop</td>
+                        <td>R$110</td>
+                        <td><span class="status pendente">Pendente</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Apple Watch</td>
+                        <td>R$1200</td>
+                        <td><span class="status estornado">Estornado</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Addidas Shoes</td>
+                        <td>R$620</td>
+                        <td><span class="status emProgresso">Em andamento</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Ar-condicionado</td>
+                        <td>R$1200</td>
+                        <td><span class="status concluido">Concluido</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Dell Laptop</td>
+                        <td>R$110</td>
+                        <td><span class="status pendente">Pendente</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Apple Watch</td>
+                        <td>R$1200</td>
+                        <td><span class="status estornado">Estornado</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Addidas Shoes</td>
+                        <td>R$620</td>
+                        <td><span class="status emProgresso">Em andamento</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</center>
+
+<script type="text/javascript">
+            $(".btn").on("click",function(){
+            $('.menu').toggleClass("show");
+            });
+
+</script>
+</body>
+</html>
+

@@ -1,16 +1,17 @@
 package br.com.digitalbank.resources;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import br.com.digitalbank.repositories.ContaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/login")
 public class LoginResource {
 
-    @PostMapping
-    public String login(){
-        return "login";
-    }
+    @Autowired
+    private ContaRepository contaRepository;
 
+//    @GetMapping("/login")
+//    public String fazerlogin() {
+//        return "conta";
+//    }
 }

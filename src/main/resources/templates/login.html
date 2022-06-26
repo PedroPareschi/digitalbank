@@ -4,16 +4,21 @@
 <head>
     <meta name="viewport" content="width=device-width">
     <title>Login</title>
-    <link rel="stylesheet" th:href=@{"login.css}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
 </head>
 <body>
 
-<form th:action="@{/login}" class="login-form">
+
+<form th:action="@{/login}" class="login-form" method="post">
     <h1>Faça seu login</h1>
 
+    <div th:if="${param.error}" class="alert alert-error">
+        Invalid username and password.
+    </div>
+
     <div class="txtb">
-        <input name="username" type="text">
+        <input type="text" name="email">
         <span data-placeholder="Email"></span>
     </div>
 
@@ -39,6 +44,8 @@
         if($(this).val() == "")
         $(this).removeClass("focus");
       });
+
+
 
 
 </script>

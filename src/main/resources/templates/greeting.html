@@ -21,7 +21,7 @@
     <div class="menu">
         <a class="active" href="#">Página Inicial</a>
         <a href="#">Quem somos nós?</a>
-        <a href="Login/index.html" style="background-color: #3b93c3; color: #333; padding: 20px 20px;">Login</a>
+        <a th:href="@{/login}" style="background-color: #3b93c3; color: #333; padding: 20px 20px;">Login</a>
     </div>
 </div>
 <div class="header">
@@ -31,6 +31,7 @@
 $(".btn").on("click",function(){
   $('.menu').toggleClass("show");
 });
+
 
 
 </script>

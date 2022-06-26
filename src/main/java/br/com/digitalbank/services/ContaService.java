@@ -3,13 +3,10 @@ package br.com.digitalbank.services;
 import br.com.digitalbank.domain.Atividade;
 import br.com.digitalbank.domain.Conta;
 import br.com.digitalbank.domain.enums.FormaDePagamento;
-import br.com.digitalbank.domain.enums.Perfil;
 import br.com.digitalbank.dtos.ContaDTO;
 import br.com.digitalbank.dtos.TransferenciaDTO;
 import br.com.digitalbank.repositories.AtividadeRepository;
 import br.com.digitalbank.repositories.ContaRepository;
-import br.com.digitalbank.security.UserSS;
-import br.com.digitalbank.services.exceptions.AuthorizationException;
 import br.com.digitalbank.services.exceptions.ObjectNotFoundException;
 import br.com.digitalbank.services.exceptions.SaldoInsuficienteException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,10 +37,6 @@ public class ContaService {
     }
 
     public Conta find(Integer id) {
-        UserSS user = UserService.authenticated();
-        if (user == null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())) {
-            throw new AuthorizationException("Acesso negado");
-        }
         Optional<Conta> conta = repository.findById(id);
         return conta.orElseThrow(() -> new ObjectNotFoundException("Conta não encontrado! Id: " + id));
     }

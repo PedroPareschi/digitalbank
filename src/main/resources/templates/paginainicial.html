@@ -45,6 +45,7 @@
             <div>
                 <p> Cartão de crédito </p>
                 <div class="numbers" th:text="${conta.cartaoCredito.fatura}"></div>
+                <div class="cardName">Limite</div>
                 <div class="cardName" th:text="${conta.cartaoCredito.limite}"></div>
             </div>
             <div class="iconBx">
@@ -55,7 +56,7 @@
             <div>
                 <p> Empréstimo </p>
                 <div class="cardName">Valor disponível até</div>
-                <div class="numbers">R$12.500,00</div>
+                <div class="numbers">12.500,00</div>
             </div>
             <div class="iconBx">
                 <ion-icon name="wallet-outline"></ion-icon>
@@ -69,17 +70,24 @@
                     <h2>Histórico de compras</h2>
                     <a href="#" class="btm">Visualizar todos</a>
                 </div>
-
                 <table>
                     <thead>
                     <tr>
-                        <td>Nome</td>
-                        <td>Preço</td>
-                        <td>Status</td>
+                        <td>Valor</td>
+                        <td>Data</td>
+                        <td>Categoria</td>
+                        <td>Pagemento</td>
+                        <td>Conta</td>
                     </tr>
                     </thead>
                     <tbody>
-
+                    <tr th:each="atividade: ${atividades}">
+                        <td th:text="${atividade.valor}">Valor</td>
+                        <td th:text="${atividade.data}">Data</td>
+                        <td th:text="${atividade.categoria}">Categoria</td>
+                        <td th:text="${atividade.formaDePagamento}">Pagemnto</td>
+                        <td th:text="${atividade.nomeContaDestino}">Conta</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -90,6 +98,9 @@
             $(".btn").on("click",function(){
             $('.menu').toggleClass("show");
             });
+
+
+
 
 </script>
 </body>

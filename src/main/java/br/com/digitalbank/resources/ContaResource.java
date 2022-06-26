@@ -1,5 +1,6 @@
 package br.com.digitalbank.resources;
 
+import br.com.digitalbank.domain.Atividade;
 import br.com.digitalbank.domain.Conta;
 import br.com.digitalbank.dtos.ContaDTO;
 import br.com.digitalbank.dtos.TransferenciaDTO;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/conta")
@@ -37,6 +39,8 @@ public class ContaResource {
         Conta conta = user.getConta();
         ModelAndView modelAndView = new ModelAndView("paginainicial.html");
         modelAndView.addObject("conta", conta);
+        List<Atividade> atividades = conta.getAtividades();
+        modelAndView.addObject("atividades", atividades);
         return modelAndView;
     }
 

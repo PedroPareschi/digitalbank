@@ -1,0 +1,348 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Gill Sans MT";
+    background: #d7d7cf;
+  }
+  
+  .navbar{
+    position: fixed;
+    height: 80px;
+    overflow: hidden;
+    top: 0;
+    display: flex;
+    align-items: center;
+    background: #333;
+    width: 100%;
+  }
+  
+  .logo{
+    background: url(logo.png) no-repeat 50% 50%;
+    background-size: contain;
+    width: 180px;
+    height: 18px;
+    float: left;
+    margin-left:20px;
+  }
+  
+  .menu{
+    position: absolute;
+    right: 20px;
+  }
+  
+  .menu a{
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    margin-left: 20px;
+    transition: color 0.3s;
+    text-transform: uppercase;
+  }
+  
+  .menu a:hover{
+    color: #3b93c3;
+  }
+  
+  .menu a.active {
+    color: #3b93c3;
+  }
+  
+  .header{
+    width: 100%;
+    height: 600px;
+    background: url(https://imgur.com/8HZD2cY.jpg) no-repeat 20% 20%;
+    background-size: cover;
+    margin-top: 80px;
+  }
+  .btn{
+    display: none;
+    position: absolute;
+    right: 20px;
+  }
+  .btn:hover > span{
+    background: #3b93c3;
+  }
+  .btn span{
+    display: block;
+    margin: 6px;
+    width: 40px;
+    height: 3px;
+    background: #3b93c3;
+  }
+  p{
+    font-size: 20px;
+    text-align: justify;
+  }
+
+/* CARD */
+.cardBox {
+  position: relative;
+  width: 90%;
+  padding: 20px;
+  margin-top: 80px;
+  margin-left: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px; 
+}
+
+.cardBox .card{
+    position: relative;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    border-style: outset;
+    border-color: rgb(116, 116, 116);
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+  
+.cardBox .card .numbers{
+    position: relative;
+    font-weight: 500;
+    font-size: 2.5rem;
+    color: #3b93c3;
+}
+
+.cardBox .card .cardName{
+    color: var(--black2);
+    font-size: 1.1rem;
+    margin-top: 5px;
+}
+
+.cardBox .card .iconBx{
+    font-size: 3.5rem;
+    color: var(--black2);
+}
+
+.cardBox .card:hover{
+    background: #3b93c3;
+}
+
+.cardBox .card:hover .numbers,
+.cardBox .card:hover .cardName,
+.cardBox .card:hover .iconBx{
+    color: var(--white);
+}
+
+/* Histórico */
+
+.details{
+    position: relative;
+    width: 400%;
+    padding: 20%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 30px;
+}
+
+.details .recentOrders{
+    position: relative;
+    display: grid;
+    min-height: 100px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    border-style: outset;
+    border-color: rgb(116, 116, 116);
+}
+
+.details .cardHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.cardHeader h2{
+    font-weight: 600;
+    color: #3b93c3;
+}
+
+.cardHeader .btm{
+    position: relative;
+    padding: 5px 10px;
+    background: var(--#3b93c3);
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px;
+}
+
+.details table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.details table thead td{
+    font-weight: 600;
+}
+
+.details .recentOrders table tr{
+    color: var(--black1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.details .recentOrders table tr:last-child{
+    border-bottom: none;
+}
+
+.details .recentOrders table tbody td:hover{
+    background: var(--#3b93c3);
+    color: var(--white);
+}
+
+.details .recentOrders table tr td{
+    padding: 10px;
+}
+
+.details .recentOrders table tr td:last-child{
+    text-align: end;
+}
+
+.details .recentOrders table tr td:nth-child(2){
+    text-align: center;
+}
+
+.status.concluido{
+    padding: 2px 4px;
+    background: #8de02c;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.status.pendente{
+    padding: 2px 4px;
+    background: #f9ca3f;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.status.estornado{
+    padding: 2px 4px;
+    background: #f00;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.status.emProgresso{
+    padding: 2px 4px;
+    background: #1795ce;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+@media only screen and (max-width : 600px) {
+    .navbar{
+      overflow: visible;
+    }
+    .menu{
+      width: 100%;
+      right: 0;
+      top: 80px;
+      background: #333;
+      overflow: hidden;
+      max-height: 0;
+    }
+    .menu a{
+      display: block;
+      text-align: center;
+      padding: 10px;
+      margin: 0;
+    }
+    .btn{
+      display: block;
+      cursor: pointer;
+    }
+    .show{
+      max-height: 500px;
+    }
+    .cardBox{
+        grid-template-columns: repeat(1, 1fr);
+   }
+   .cardHeader h2{
+       font-size: 20px;
+   }
+  }
+
+  
+ h1{
+    font-weight: 600;
+    color: #3b93c3;
+  }
+  
+  .txtb{
+    font-size: 20px;
+    border-bottom: 3px solid #adadad;
+    position: relative;
+    margin: 30px 0;
+  }
+  
+  .txtb input{
+    font-size: 20px;
+    color: #333;
+    border: none;
+    width: 100%;
+    outline: none;
+    background: none;
+    padding: 0 5px;
+    height: 40px;
+  }
+  
+  .txtb span::before{
+    content: attr(data-placeholder);
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    z-index: -1;
+    transition: .5s;
+  }
+  
+  .txtb span::after{
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: #3b93c3;
+    transition: .5s;
+  }
+  
+  .focus + span::before{
+    top: -5px;
+  }
+  .focus + span::after{
+    width: 100%;
+  }
+  
+  .logbtn{
+    display: block;
+    width: 100%;
+    height: 50px;
+    border: none;
+    background-color: #3b93c3;
+    background-size: 200%;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    transition: .5s;
+  }
+  
+  .logbtn:hover{
+    background-position: right;
+  }
+  
+  .bottom-text{
+    margin-top: 60px;
+    text-align: center;
+    font-size: 13px;
+  }
+  

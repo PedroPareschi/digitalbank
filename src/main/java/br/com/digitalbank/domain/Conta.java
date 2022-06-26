@@ -5,10 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Entity
@@ -46,8 +43,8 @@ public class Conta implements Serializable {
     private CartaoCredito cartaoCredito;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "conta")
-    private List<Atividade> atividades;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "conta", cascade = CascadeType.ALL)
+    private List<Atividade> atividades = new ArrayList<>();
 
     public Conta(Integer id, String cpf, String nome, String celular, String email, String senha, Double saldo,
                  Cartao cartaoDeDebito, CartaoCredito cartaoCredito) {

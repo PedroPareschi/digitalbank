@@ -10,15 +10,20 @@ public class TransferenciaDTO implements Serializable {
     @NotNull
     private Double valor;
 
-    @NotNull
-    private Integer contaDestinoId;
+    private String cpf;
+
+    private String email;
+
+    private String celular;
 
     public TransferenciaDTO() {
     }
 
-    public TransferenciaDTO(Integer tipoTransferencia, Double valor, Integer contaDestinoId) {
+    public TransferenciaDTO(Double valor, String cpf, String email, String celular) {
         this.valor = valor;
-        this.contaDestinoId = contaDestinoId;
+        this.cpf = cpf;
+        this.email = email;
+        this.celular = celular;
     }
 
     public Double getValor() {
@@ -29,11 +34,27 @@ public class TransferenciaDTO implements Serializable {
         this.valor = valor;
     }
 
-    public Integer getContaDestinoId() {
-        return contaDestinoId;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setContaDestinoId(Integer contaDestinoId) {
-        this.contaDestinoId = contaDestinoId;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
     }
 }

@@ -2,6 +2,8 @@ package br.com.digitalbank.domain;
 
 import br.com.digitalbank.domain.enums.Perfil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -43,7 +45,8 @@ public class Conta implements Serializable {
     private CartaoCredito cartaoCredito;
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "conta", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "conta")
+    @NotFound(action = NotFoundAction.IGNORE)
     private List<Atividade> atividades = new ArrayList<>();
 
     public Conta(Integer id, String cpf, String nome, String celular, String email, String senha, Double saldo,

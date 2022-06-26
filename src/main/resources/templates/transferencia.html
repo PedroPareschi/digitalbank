@@ -32,26 +32,25 @@
             <div class="recentOrders">
                 <div class="cardHeader">
                 </div>
-                <form action="index.html">
+                <form th:action="@{/transferencia}" method="post" name="transferenciaDTO">
                     <h1>TRANSFERÊNCIA</h1>
-
                     <div class="txtb">
-                        <input type="number">
-                        <span data-placeholder="Qual é o valor da Transferência?"></span>
+                        <input type="text" name="cpf">
+                        <span data-placeholder="CPF"></span>
                     </div>
 
                     <div class="txtb">
-                        <input type="number">
-                        <span data-placeholder="Agência sem digito"></span>
+                        <input type="email" name="email">
+                        <span data-placeholder="E-mail"></span>
                     </div>
 
                     <div class="txtb">
-                        <input type="number">
-                        <span data-placeholder="Conta com digito"></span>
+                        <input type="tel" name="celular">
+                        <span data-placeholder="Celular"></span>
                     </div>
 
                     <div class="txtb">
-                        <input type="number">
+                        <input type="number" name="valor">
                         <span data-placeholder="Quanto você quer transferir?"></span>
                     </div>
 
@@ -68,6 +67,8 @@
             $('.menu').toggleClass("show");
             });
 
+
+
 </script>
 <script type="text/javascript">
                 $(".txtb input").on("focus",function(){
@@ -78,6 +79,8 @@
                   if($(this).val() == "")
                   $(this).removeClass("focus");
                 });
+
+
 
 </script>
 </body>

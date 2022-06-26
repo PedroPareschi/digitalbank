@@ -14,7 +14,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Optional;
 
@@ -46,26 +45,17 @@ public class ContaService {
                 contaDTO.getEmail(), passwordEncoder.encode(contaDTO.getSenha()), 0.0, null, null);
     }
 
-    public void transferir(Integer id, TransferenciaDTO transferenciaDTO) {
-        Conta contaOrigem = find(id);
-        Optional<Conta> contaDestinoOptional = repository.findById(transferenciaDTO.getContaDestinoId());
-        Conta contaDestino = contaDestinoOptional
-                .orElseThrow(() -> new ObjectNotFoundException("Conta não encontrado! Id: " + id));
+    public void transferir(Conta contaOrigem, TransferenciaDTO transferenciaDTO) {
         double valor = transferenciaDTO.getValor();
         double valorOrigemComTransferencia = contaOrigem.getSaldo() - valor;
         if (valorOrigemComTransferencia >= 0.0) {
             contaOrigem.setSaldo(valorOrigemComTransferencia);
-            contaDestino.setSaldo(contaDestino.getSaldo() + valor);
-            Atividade atividadeOrigem = new Atividade(null, -valor, new Date(),
+            Atividade atividadeOrigem = new Atividade(null, valor, new Date(),
                     "Transferência para conta corrente", FormaDePagamento.TRANSFERENCIA,
-                    contaDestino.getNome(), contaOrigem);
-            Atividade atividadeDestino = new Atividade(null, valor, new Date(),
-                    "Recebimento de transferência", FormaDePagamento.TRANSFERENCIA,
-                    contaOrigem.getNome(), contaDestino);
-            atividadeRepository.saveAll(Arrays.asList(atividadeOrigem, atividadeDestino));
+                    "Conta corrente", contaOrigem);
+            atividadeRepository.save(atividadeOrigem);
             contaOrigem.getAtividades().add(atividadeOrigem);
-            contaDestino.getAtividades().add(atividadeDestino);
-            repository.saveAll(Arrays.asList(contaOrigem, contaDestino));
+            repository.save(contaOrigem);
         } else {
             throw new SaldoInsuficienteException("Saldo insuficiente! Saldo atual: " + contaOrigem.getSaldo());
         }

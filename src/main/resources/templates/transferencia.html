@@ -1,107 +1,75 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
     <meta charset="utf-8">
     <title>Transferência</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" th:href="@{/css/transferencia.css}">
     <meta name="viewport" content="width=device-width">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script  type = "module"  src = "https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script> 
-    <script  nomodule  src = "https://unpkg .com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  </head>
-  <body>
-        <div class="navbar">
-            <div class="logo">
-            </div>
-            <a class="btn">
-             <span></span>
-             <span></span>
-             <span></span>
-            </a>
-            <div class="menu">
-             <a href="#"> Histórico </a>
-             <a href="#" class="active"> Transferência </a>
-             <a style="background-color: #3b93c3; color: #333; padding: 20px 20px;">Name_Login</a>
-             </div>
-        </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg .com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+<div class="navbar">
+    <div class="logo">
+    </div>
+    <a class="btn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </a>
+    <div class="menu">
+        <a th:href="@{/conta}" class="active"> Histórico </a>
+        <a th:href="@{/transferencia}"> Transferência </a>
+        <a style="background-color: #3b93c3; color: #333; padding: 20px 20px;">Name_Login</a>
+    </div>
+</div>
 
-        <center>
-        <!-- CARDS -->
-        <div class="cardBox">
-            <div class="card">
-                <div>
-                    <p></p>
-                    <div class="numbers">R$500,00</div>
-                    <div class="cardName">Saldo em conta</div>
-                </div>
-
-                <div class="iconBx">
-                     <ion-icon name="cash-outline"></ion-icon>
-                </div>
-            </div>    
-
-            <div class="card">
-                <div>
-                    <p> Cartão de crédito </p>
-                    <div class="numbers">R$93,75</div>
-                    <div class="cardName">Limite disponível de R$200,00</div>
-                </div>
-                <div class="iconBx">
-                 <ion-icon name="card-outline"></ion-icon>        
-                </div>
-            </div>
-
-            <div class="card">
-                <div>
-                    <p> Empréstimo </p>
-                    <div class="cardName">Valor disponível até</div>
-                    <div class="numbers">R$12.500,00</div>
-                </div>
-                <div class="iconBx">
-                    <ion-icon name="wallet-outline"></ion-icon>
-                </div>
-            </div>
-        <!-- DETALHES ABAIXO -->
+<center>
+    <div class="cardBox">
         <div class="details">
-        <div class="recentOrders">
-            <div class="cardHeader">
+            <div class="recentOrders">
+                <div class="cardHeader">
+                </div>
+                <form action="index.html">
+                    <h1>TRANSFERÊNCIA</h1>
+
+                    <div class="txtb">
+                        <input type="number">
+                        <span data-placeholder="Qual é o valor da Transferência?"></span>
+                    </div>
+
+                    <div class="txtb">
+                        <input type="number">
+                        <span data-placeholder="Agência sem digito"></span>
+                    </div>
+
+                    <div class="txtb">
+                        <input type="number">
+                        <span data-placeholder="Conta com digito"></span>
+                    </div>
+
+                    <div class="txtb">
+                        <input type="number">
+                        <span data-placeholder="Quanto você quer transferir?"></span>
+                    </div>
+
+                    <input type="submit" class="logbtn" value="Concluir">
+
+                </form>
             </div>
-            <form action="index.html">
-                <h1>TRANSFERÊNCIA</h1>
-        
-                <div class="txtb">
-                  <input type="number">
-                  <span data-placeholder="Qual é o valor da Transferência?"></span>
-                </div>
-        
-                <div class="txtb">
-                  <input type="number">
-                  <span data-placeholder="Agência sem digito"></span>
-                </div>
-
-                <div class="txtb">
-                    <input type="number">
-                    <span data-placeholder="Conta com digito"></span>
-                  </div>
-
-                  <div class="txtb">
-                    <input type="number">
-                    <span data-placeholder="Quanto você quer transferir?"></span>
-                  </div>
-        
-                <input type="submit" class="logbtn" value="Concluir">
-        
-              </form>
         </div>
-        </div>
-        </center>    
+    </div>
+</center>
 
-        <script type="text/javascript">
+<script type="text/javascript">
             $(".btn").on("click",function(){
             $('.menu').toggleClass("show");
             });
-        </script>
-              <script type="text/javascript">
+
+</script>
+<script type="text/javascript">
                 $(".txtb input").on("focus",function(){
                   $(this).addClass("focus");
                 });
@@ -110,7 +78,8 @@
                   if($(this).val() == "")
                   $(this).removeClass("focus");
                 });
-                </script>
-  </body>
+
+</script>
+</body>
 </html>
 

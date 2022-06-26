@@ -4,10 +4,12 @@ import br.com.digitalbank.domain.Conta;
 import br.com.digitalbank.dtos.ContaDTO;
 import br.com.digitalbank.dtos.TransferenciaDTO;
 import br.com.digitalbank.services.ContaService;
-import io.swagger.annotations.ApiOperation;
+import br.com.digitalbank.services.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
@@ -20,8 +22,7 @@ public class ContaResource {
     @Autowired
     private ContaService service;
 
-    @ApiOperation(value = "Cadastrando nova conta")
-    @PostMapping()
+    @PostMapping("/cadastro")
     public ResponseEntity<Void> insert(@Valid @RequestBody ContaDTO contaDTO) {
         Conta conta = service.fromDTO(contaDTO);
         conta = service.insert(conta);
@@ -30,14 +31,15 @@ public class ContaResource {
         return ResponseEntity.created(uri).build();
     }
 
-    @ApiOperation(value = "Buscando conta por id")
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<Conta> find(@PathVariable Integer id) {
-        Conta conta = service.find(id);
-        return ResponseEntity.ok().body(conta);
+    @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView find(Authentication authentication) {
+        CustomUserDetails user = (CustomUserDetails) authentication.getPrincipal();
+        Conta conta = user.getConta();
+        ModelAndView modelAndView = new ModelAndView("paginainicial.html");
+        modelAndView.addObject("conta", conta);
+        return modelAndView;
     }
 
-    @ApiOperation(value = "Transferir dinheiro")
     @PutMapping(value = "/{id}/transferencia")
     public ResponseEntity<Void> transferir(@PathVariable Integer id, @Valid @RequestBody TransferenciaDTO transferenciaDTO){
         service.transferir(id, transferenciaDTO);

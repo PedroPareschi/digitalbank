@@ -8,11 +8,17 @@ import java.util.Collection;
 
 public class CustomUserDetails implements UserDetails {
 
+    private static final long serialVersionUID = 769467367439039040L;
+
     private Conta conta;
 
 
     public CustomUserDetails(Conta conta) {
         this.conta = conta;
+    }
+
+    public Conta getConta() {
+        return conta;
     }
 
     @Override

@@ -26,13 +26,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic().disable();
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/css/**").permitAll()
+                .antMatchers("/", "/css/**", "/img/**").permitAll()
                 .anyRequest().authenticated().and()
                 .formLogin()
                 .loginPage("/login")
                 .permitAll()
                 .usernameParameter("email")
-                .defaultSuccessUrl("/conta")
+                .defaultSuccessUrl("/conta", true)
                 .and()
                 .logout()
                 .permitAll();
